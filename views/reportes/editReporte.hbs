@@ -1,0 +1,125 @@
+
+<div class="card">
+  <div class="card-header text-bg-secondary p-2">
+    <h3>Folio: {{reporte.id}}</h3>
+  </div>
+  <div class="card-body">
+    <form action="/edit/{{reporte.id}}" method="post">
+      <div class="input-group mb-3">
+        <label for="fecha" class="input-group-text">FECHA Y HORA</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fecha"
+          value="{{reporte.fecha}}"
+          id="fecha"
+          aria-label="Disabled input example" 
+          disabled
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label for="adscripcion" class="input-group-text">ADSCRIPCION:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="adscripcion"
+          value="{{reporte.adscripcion}}"
+          id="adscripcion"
+          required
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label for="usuario" class="input-group-text">USUARIO</label>
+        <input
+          type="text"
+          class="form-control"
+          name="usuario"
+          id="usuario"
+          value="{{reporte.usuario}}"
+          required
+        />
+      </div>
+      <div class="input-group mb-3">
+        <label for="problema" class="input-group-text">PROBLEMA</label>
+        <textarea
+          class="form-control"
+          name="problema"
+          id="problema"
+          rows="3"
+          required
+        >{{reporte.problema}}</textarea>
+      </div>
+      <div class="input-group mb-3">
+        <label for="solucion" class="input-group-text">SOLUCION</label>
+        <textarea
+          class="form-control"
+          name="solucion"
+          id="solucion"
+          rows="3"
+          required
+        >{{reporte.solucion}}</textarea>
+      </div>
+      <div class="input-group mb-3">
+        <label for="atendio" class="input-group-text">ATENDIO</label>
+        <select
+          class="form-select"
+          name="atendio"
+          id="atendio"
+          aria-label="Default select example"
+          required
+        >
+          <option
+            value="{{reporte.atendio}}"
+            selected
+          >{{reporte.atendio}}</option>
+          <option value="LILIA FABIOLA MONTES CAMPOS">LILIA FABIOLA MONTES
+            CAMPOS</option>
+          <option value="JOSE DE JESUS RAMIREZ BOCANEGRA">JOSE DE JESUS RAMIREZ
+            BOCANEGRA</option>
+          <option value="FERNANDO RAMIREZ BOCANEGRA">FERNANDO RAMIREZ BOCANEGRA</option>
+          <option value="LEONARDO SANCHEZ CABRERA">LEONARDO SANCHEZ CABRERA</option>
+          <option value="JOSE RODOLFO RESENDIZ HERRERA">JOSE RODOLFO RESENDIZ
+            HERRERA</option>
+          <option value="VICTOR HUGO GONZALEZ VILLEGAS">VICTOR HUGO GONZALEZ
+            VILLEGAS</option>
+          <option value="JOSE DE JESUS REYES CASTAÑOL">JOSE DE JESUS REYES
+            CASTAÑOL</option>
+          <option value="ARTURO MENDEZ VAZQUEZ">ARTURO MENDEZ VAZQUEZ</option>
+          <option value="ARTURO CORONA BELTRAN">ARTURO CORONA BELTRAN</option>
+          <option value="LUIS FERNANDO BARCENAS JIMENEZ">LUIS FERNANDO BARCENAS
+            JIMENEZ</option>
+          <option value="EDGAR IGNACIO GARCIA AVILES">EDGAR IGNACIO GARCIA
+            AVILES</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <label for="estado" class="input-group-text">STATUS</label>
+        <select
+          class="form-select"
+          name="estado"
+          id="estado"
+          aria-label="Default select example"
+          required
+        >
+          <option
+            value="{{reporte.estado}}"
+            selected
+          >{{reporte.estado}}</option>
+          <option value="ATENDIDO">ATENDIDO</option>
+          <option value="PROCESO">PROCESO</option>
+          <option value="PENDIENTE">PENDIENTE</option>
+        </select>
+      </div>
+
+      <div class="mb-3" id="dBtnEnviar">
+        <a href="/" class="btn btn-secondary">Regresar</a>
+        <button type="submit" class="btn btn-primary" onclick="handleReload()">Actualizar</button>
+      </div>
+    </form>
+    <button class="btn btn-danger mb-5" onclick="generatePDF()"><i class="bi bi-filetype-pdf">Exportar PDF</i></button>
+    
+    <div id="alerta" class="alert alert-success alert-dismissible fade show" role="alert" style="display: none;">
+      <strong>¡Actualizado con éxito!</strong>
+    </div>
+  </div>
+</div>

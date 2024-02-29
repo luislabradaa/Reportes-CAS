@@ -1,0 +1,58 @@
+
+<div class="container-fluid">
+    {{!-- Button trigger modal  --}}
+    <div class="mb-4 mt-3" id="dBtn">
+        <a href="/add" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i>
+            Nuevo reporte
+        </a>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="mt-5">
+        {{#if reportes}}
+        <table class="table table-hover" id="myTable">
+            <thead>
+                <tr>
+                    <th scope="col">FECHA Y HORA</th>
+                    <th scope="col">ADSCRIPCION</th>
+                    <th scope="col">USUARIO</th>
+                    <th scope="col">PROBLEMA</th>
+                    <th scope="col">SOLUCION</th>
+                    <th scope="col">ATENDIO</th>
+                    <th scope="col">STATUS</th>
+                    <th scope="col">EDITAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each reportes}}
+                <tr class="{{#ifCond estado '===' 'ATENDIDO'}} table-success {{else}}
+                    {{#ifCond estado '===' 'PROCESO'}} table-warning {{else}}
+                    table-secondary {{/ifCond}}{{/ifCond}}">
+                    <td>{{fecha }}</td>
+                    <td>{{adscripcion}}</td>
+                    <td>{{usuario}}</td>
+                    <td>{{problema}}</td>
+                    <td>{{solucion}}</td>
+                    <td>{{atendio}}</td>
+                    <td>{{estado}}</td>
+                    <td><a href="edit/{{id}}" class="btn btn-warning"><i class="bi bi-pencil-fill"></i></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <div class="card text-center mx-auto" style="width: 350px;">
+            <div class="card-header">
+                <h3>No hay reportes para mostrar</h3>
+            </div>
+            <div class="card-body">
+                <p>Crea uno haciendo clic en Nuevo reporte</p>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+</div>
+
+
