@@ -31,6 +31,7 @@ function generatePDF() {
   doc.text(20,54, "DIRECCIÓN DE SERVICIOS Y RECURSOS MATERIALES")
   doc.text(startXText, 61, "COORDINACIÓN GENERAL DE SERVICIOS DE INFORMATIZACIÓN", { align: "center" });
   doc.setFontSize(12);
+  doc.text(130, 80, "FECHA: ")
   doc.text(150, 80, fecha);
   doc.text(20, 80, adscripcion);
   doc.text(20, 89, usuario);

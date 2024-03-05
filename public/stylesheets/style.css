@@ -15,3 +15,8 @@ body{
 #dBtnEnviar{
     text-align: center;
 }
+#signCanva {
+    border: 2px dotted #CCCCCC;
+    border-radius: 15px;
+    cursor: crosshair;
+  }

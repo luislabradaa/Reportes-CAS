@@ -27,9 +27,7 @@
             </thead>
             <tbody>
                 {{#each reportes}}
-                <tr class="{{#ifCond estado '===' 'ATENDIDO'}} table-success {{else}}
-                    {{#ifCond estado '===' 'PROCESO'}} table-warning {{else}}
-                    table-secondary {{/ifCond}}{{/ifCond}}">
+                <tr class="{{#ifEquals estado 'ATENDIDO'}} table-success {{else ifEquals estado 'PROCESO'}} table-warning {{else}} table-secondary {{/ifEquals}}">
                     <td>{{fecha }}</td>
                     <td>{{adscripcion}}</td>
                     <td>{{usuario}}</td>

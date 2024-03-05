@@ -2,8 +2,8 @@ import pool from "../database/db.js";
 
 async function obtenerReportes(req,res){
   try {
-    const [result] = await pool.query("SELECT * from tbl_reporte");
-    //var fecha = result[0].fecha;
+    const [result] = await pool.query("SELECT CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, id, adscripcion, usuario, problema, solucion, atendio, estado from tbl_reporte");
+    console.log(result);
     res.render("reportes/reportes", { reportes: result});
   } catch (error) {
     res.render("reportes/error", { error: error.message });
@@ -21,7 +21,7 @@ async function obtenerReporte(req,res){
   try {
     const { id } = req.params;
     const [reporte] = await pool.query(
-      "SELECT * FROM tbl_reporte WHERE id =?",
+      "SELECT CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, id, adscripcion, usuario, problema, solucion, atendio, estado from tbl_reporte WHERE id =?",
       [id]
     );
     const reporteEdit = reporte[0];
