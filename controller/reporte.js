@@ -20,7 +20,6 @@ async function obtenerReportes(req, res) {
     const [result] = await pool.query(
       "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, atendio, estado from tbl_reporte"
     );
-    console.log(result);
     res.render("reportes/reportes", { reportes: result });
   } catch (error) {
     res.render("reportes/error", { error: error.message });
@@ -42,7 +41,6 @@ async function obtenerReporte(req, res) {
       [id]
     );
     const reporteEdit = reporte[0];
-    console.log(reporteEdit);
     res.render("reportes/editReporte", { reporte: reporteEdit });
   } catch (error) {
     res.render("reportes/error", { error: error.message });
@@ -50,8 +48,6 @@ async function obtenerReporte(req, res) {
 }
 
 async function crearReporte(req, res) {
-
-
   try {
     const { adscripcion, usuario, problema, solucion, atendio, estado } =
       req.body;
@@ -82,7 +78,7 @@ async function editarReporte(req, res) {
       estado
     };
 
-    // Verificamos si existe un archivo adjunto
+    // Verificar si existe un archivo adjunto
     if (req.file) {
       const { filename: evidencia } = req.file;
       editReporte.evidencia = evidencia;
@@ -90,18 +86,17 @@ async function editarReporte(req, res) {
 
     const { id } = req.params;
 
-    // Construimos la consulta SQL dinámica
+    // Construye la consulta SQL dinámica
     let updateQuery = "UPDATE tbl_reporte SET";
     const updateFields = Object.keys(editReporte).map(key => `${key} = ?`).join(", ");
     updateQuery += ` ${updateFields} WHERE id = ?;`;
 
     const updateValues = Object.values(editReporte);
-    updateValues.push(id); // Agregamos el ID al final de los valores
+    updateValues.push(id); // Agregar el ID al final de los valores
 
-    // Ejecutamos la consulta SQL
+    // Ejecuta la consulta SQL
     await pool.query(updateQuery, updateValues);
 
-    // Redireccionamos después de la actualización
     setTimeout(() => {
       res.redirect(`/edit/${id}`);
     }, 1500);
