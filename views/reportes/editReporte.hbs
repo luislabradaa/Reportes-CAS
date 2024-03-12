@@ -133,7 +133,6 @@
       </div>
     </form>
     <div class="row">
-      <img src="/images/evidencias/{{reporte.evidencia}}" alt="Imagen de evidencia" class="img-fluid" id="imgEvidencia">
       {{!-PENDIENTE FIRMA}}
       {{!-- <div class="col-md-6">
         <canvas id="signCanva" width="620" height="160">
@@ -148,20 +147,35 @@
         <img id="preSign" src="" alt="Firma obtenida!" />
       </div>--}}
      
-    </div> 
-      <div class="col-3">
-        <button class="btn btn-danger mb-5 mt-1" onclick="generatePDF()"><i
-          class="bi bi-filetype-pdf"
-        >Exportar PDF</i></button>
-      </div>
-
-    <div
-      id="alerta"
-      class="alert alert-success alert-dismissible fade show"
-      role="alert"
-      style="display: none;"
-    >
-      <strong>¡Actualizado con éxito!</strong>
     </div>
+    <div class="row">
+        {{!Abre el modal que contiene la imagen}}
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Ver imagen
+        </button>
+        <button class="btn btn-danger mb-5 mt-1" onclick="generatePDF()"><i class="bi bi-filetype-pdf">
+          Exportar PDF</i>
+        </button>
+    </div> 
+
+
+{{!Modal para mostrar la imagen de evidencia}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">folio: {{reporte.id}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="/images/evidencias/{{reporte.evidencia}}" alt="Imagen de evidencia" class="img-fluid" id="imgEvidencia">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
   </div>
 </div>
