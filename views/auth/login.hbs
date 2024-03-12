@@ -1,0 +1,18 @@
+<h1>login works</h1>
+
+<div class="container" >
+    <form action="/login" method="post" id="formLogin">
+        <input type="email" name="correo" required>
+        <input type="password" name="clave" required>
+
+        <button type="submit">Iniciar sesión</button>
+    </form>
+</div>
+
+{{!Alerta contraseña o correo incorrectos}}
+{{#if message}}
+    <script>
+        alert('{{message}}');
+    </script>
+{{/if}} 
+

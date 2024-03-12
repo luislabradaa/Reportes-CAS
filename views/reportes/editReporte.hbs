@@ -60,6 +60,16 @@
       </div>
       <div class="input-group mb-3">
         <label for="atendio" class="input-group-text">ATENDIO</label>
+        <input
+          type="text"
+          class="form-control"
+          value="{{reporte.atendio}}"
+          name="atendio"
+          id="atendio"
+        />
+      </div>
+      {{!-- <div class="input-group mb-3">
+        <label for="atendio" class="input-group-text">ATENDIO</label>
         <select
           class="form-select"
           name="atendio"
@@ -90,7 +100,7 @@
           <option value="EDGAR IGNACIO GARCIA AVILES">EDGAR IGNACIO GARCIA
             AVILES</option>
         </select>
-      </div>
+      </div> --}}
       <div class="input-group mb-3">
         <label for="estado" class="input-group-text">STATUS</label>
         <select
@@ -114,7 +124,7 @@
       </div>
 
       <div class="mb-3" id="dBtnEnviar">
-        <a href="/" class="btn btn-secondary">Regresar</a>
+        <a href="/reportes" class="btn btn-secondary">Regresar</a>
         <button
           type="submit"
           class="btn btn-primary"
