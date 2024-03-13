@@ -1,26 +1,32 @@
+/*Pantalla Login*/
 body{
     padding-top: 5px;
     padding-left: 5px;
     padding-right: 5px;
+    background-image: url("/images/fondo.jpg");
 }
 
-#title{
-    text-align: center;
+#titleL{
+    color: #993399;
+    font-size: 80px;
 }
-#dBtn{
-    padding-top: 5px;
-    text-align: end;
-    padding-right: 20px;
+   #titleL2{
+    color: #ffffff;
+    font-size: 80px;
 }
-#dBtnEnviar{
-    text-align: center;
+
+/*Pantalla Menú*/
+#titleM{
+    color: #ffffff;
 }
+#nDiv{
+    height: 60px;
+}
+
+/*Pantalla reporte
 #signCanva {
     border: 2px dotted #CCCCCC;
     border-radius: 15px;
     cursor: crosshair;
 }
-#imgEvidencia{
-    width:520;
-    height: 280;
-}
+*/

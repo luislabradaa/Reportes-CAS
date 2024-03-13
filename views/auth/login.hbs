@@ -1,12 +1,39 @@
-<h1>login works</h1>
+<div class="mb-5 ps-3">
+        <img class="container-fluid" src="/images/logos.png" style="width: 600px;">
+    </div>
+<div class="container mt-2">
 
-<div class="container" >
-    <form action="/login" method="post" id="formLogin">
-        <input type="email" name="correo" required>
-        <input type="password" name="clave" required>
+    <div class="row">
+        <div class="col-6 mt-5">
 
-        <button type="submit">Iniciar sesión</button>
-    </form>
+            <div class="mb-5">
+                <h1 id="titleL">
+                    INICIO DE
+                </h1>
+                <h1 id="titleL2">
+                    SESIÓN
+                </h1>
+            </div>        
+
+            <form action="/login" method="post" id="formLogin">
+            <div class="input-group mb-3">
+                <input type="email" class="form-control" name="correo" placeholder="Correo" required>
+            </div>
+            <div class="input-group mb-3">
+                <input type="password" class="form-control" name="clave" placeholder="Clave" required>
+            </div>
+            <div class="input-group mb-3">
+                <button type="submit" class="btn btn-primary btnColor">Iniciar sesión</button>
+            </div>    
+            </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="container col-5 ps-5">
+            <img src="/images/inicio.png" class="img-fluid" style="width: 700px;">
+        </div>
+    </div>
+    
+    
 </div>
 
 {{!Alerta contraseña o correo incorrectos}}

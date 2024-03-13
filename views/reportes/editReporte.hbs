@@ -1,11 +1,11 @@
-<div class="card">
-  <div class="card-header text-bg-secondary p-2">
+<div class="card bg-info">
+  <div class="card-header text-bg-primary p-2">
     <h3>Folio: {{reporte.id}}</h3>
   </div>
-  <div class="card-body">
+  <div class="card-body bg-info">
     <form action="/edit/{{reporte.id}}" method="post" enctype="multipart/form-data">
       <div class="input-group mb-3">
-        <label for="fecha" class="input-group-text">FECHA Y HORA</label>
+        <label for="fecha" class="input-group-text bg-secondary">FECHA Y HORA</label>
         <input
           type="text"
           class="form-control"
@@ -17,7 +17,7 @@
         />
       </div>
       <div class="input-group mb-3">
-        <label for="adscripcion" class="input-group-text">ADSCRIPCION:</label>
+        <label for="adscripcion" class="input-group-text bg-secondary">ADSCRIPCION /<br> FACULTAD</label>
         <input
           type="text"
           class="form-control"
@@ -28,7 +28,7 @@
         />
       </div>
       <div class="input-group mb-3">
-        <label for="usuario" class="input-group-text">USUARIO</label>
+        <label for="usuario" class="input-group-text bg-secondary">USUARIO</label>
         <input
           type="text"
           class="form-control"
@@ -39,7 +39,7 @@
         />
       </div>
       <div class="input-group mb-3">
-        <label for="problema" class="input-group-text">PROBLEMA</label>
+        <label for="problema" class="input-group-text bg-secondary">PROBLEMA</label>
         <textarea
           class="form-control"
           name="problema"
@@ -49,7 +49,7 @@
         >{{reporte.problema}}</textarea>
       </div>
       <div class="input-group mb-3">
-        <label for="solucion" class="input-group-text">SOLUCION</label>
+        <label for="solucion" class="input-group-text bg-secondary">DIAGNOSTICO /<br> SOLUCION</label>
         <textarea
           class="form-control"
           name="solucion"
@@ -59,7 +59,7 @@
         >{{reporte.solucion}}</textarea>
       </div>
       <div class="input-group mb-3">
-        <label for="atendio" class="input-group-text">ATENDIO</label>
+        <label for="atendio" class="input-group-text bg-secondary">ATENDIO</label>
         <input
           type="text"
           class="form-control"
@@ -102,7 +102,7 @@
         </select>
       </div> --}}
       <div class="input-group mb-3">
-        <label for="estado" class="input-group-text">STATUS</label>
+        <label for="estado" class="input-group-text bg-secondary">STATUS</label>
         <select
           class="form-select"
           name="estado"
@@ -123,18 +123,19 @@
         <input class="form-control" type="file" name="evidencia" id="evidenciaInput">
       </div>
 
-      <div class="mb-3" id="dBtnEnviar">
-        <a href="/reportes" class="btn btn-secondary">Regresar</a>
+      <div class="d-flex justify-content-center" id="dBtnEnviar">
+        <a href="/reportes" class="btn btn-primary m-2">Regresar</a>
         <button
           type="submit"
-          class="btn btn-primary"
+          class="btn btn-primary m-2"
           onclick="handleReload()"
         >Actualizar</button>
       </div>
     </form>
-    <div class="row">
-      {{!-PENDIENTE FIRMA}}
-      {{!-- <div class="col-md-6">
+    {{!-PENDIENTE FIRMA}}
+    {{!-- <div class="row">
+      
+       <div class="col-md-6">
         <canvas id="signCanva" width="620" height="160">
           Firma Evidencia
         </canvas>
@@ -145,33 +146,37 @@
       </div>
       <div class="col-md-4">
         <img id="preSign" src="" alt="Firma obtenida!" />
-      </div>--}}
-     
-    </div>
-    <div class="row">
+      </div>-
+
+    </div> --}}
+    <div class="d-flex justify-content-end">
         {{!Abre el modal que contiene la imagen}}
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Ver imagen
         </button>
-        <button class="btn btn-danger mb-5 mt-1" onclick="generatePDF()"><i class="bi bi-filetype-pdf">
+        <button class="btn btn-primary m-2" onclick="generatePDF()"><i class="bi bi-filetype-pdf">
           Exportar PDF</i>
         </button>
     </div> 
+ <hr style="color: #ffffff;">
+    <div class="d-flex justify-content-center">
+      <img class="container-fluid" style="width: 45%;" src="/images/logos.png">
+    </div>
 
 
 {{!Modal para mostrar la imagen de evidencia}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="modal-content bg-info">
+      <div class="modal-header bg-primary text-white">
         <h1 class="modal-title fs-5" id="exampleModalLabel">folio: {{reporte.id}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body bg-info">
         <img src="/images/evidencias/{{reporte.evidencia}}" alt="Imagen de evidencia" class="img-fluid" id="imgEvidencia">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      <div class="modal-footer bg-info">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
