@@ -18,7 +18,7 @@ var upload = multer({storage:storage});
 async function obtenerReportes(req, res) {
   try {
     const [result] = await pool.query(
-      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, atendio, estado from tbl_reporte"
+      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, id_atendio, tbl_user.nombre, estado, evidencia from tbl_reporte inner join tbl_user on tbl_reporte.id_atendio = tbl_user.id_u;"
     );
     res.render("reportes/reportes", { reportes: result });
   } catch (error) {
@@ -27,7 +27,7 @@ async function obtenerReportes(req, res) {
 }
 async function pantallaNuevoReporte(req, res) {
   try {
-    res.render("reportes/newReporte",{ nombre: req.session.nombre });
+    res.render("reportes/newReporte",{ id: req.session.userId });
   } catch (error) {
     res.render("reportes/error", { error: error.message });
   }
@@ -37,7 +37,7 @@ async function obtenerReporte(req, res) {
   try {
     const { id } = req.params;
     const [reporte] = await pool.query(
-      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, atendio, estado, evidencia from tbl_reporte WHERE id = ?;",
+      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, id_atendio, estado, evidencia from tbl_reporte WHERE id = ?;",
       [id]
     );
     const reporteEdit = reporte[0];
@@ -49,14 +49,14 @@ async function obtenerReporte(req, res) {
 
 async function crearReporte(req, res) {
   try {
-    const { adscripcion, usuario, problema, solucion, atendio, estado } =
+    const { adscripcion, usuario, problema, solucion, id_atendio, estado } =
       req.body;
     const newReporte = {
       adscripcion,
       usuario,
       problema,
       solucion,
-      atendio,
+      id_atendio,
       estado,
     };
     await pool.query("INSERT INTO tbl_reporte SET ?", [newReporte]);
@@ -68,13 +68,13 @@ async function crearReporte(req, res) {
 
 async function editarReporte(req, res) {
   try {
-    const { adscripcion, usuario, problema, solucion, atendio, estado} = req.body;
+    const { adscripcion, usuario, problema, solucion, id_atendio, estado} = req.body;
     let editReporte = {
       adscripcion,
       usuario,
       problema,
       solucion,
-      atendio,
+      id_atendio,
       estado
     };
 
@@ -101,6 +101,7 @@ async function editarReporte(req, res) {
       res.redirect(`/edit/${id}`);
     }, 1500);
   } catch (error) {
+    console.log(error);
     res.render("reportes/error", { error: error.message });
   }
 }
