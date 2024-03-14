@@ -37,7 +37,7 @@ async function obtenerReporte(req, res) {
   try {
     const { id } = req.params;
     const [reporte] = await pool.query(
-      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, id_atendio, estado, evidencia from tbl_reporte WHERE id = ?;",
+      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, id_atendio, tbl_user.nombre, estado, evidencia from tbl_reporte inner join tbl_user on tbl_reporte.id_atendio = tbl_user.id_u WHERE id = ?;",
       [id]
     );
     const reporteEdit = reporte[0];
