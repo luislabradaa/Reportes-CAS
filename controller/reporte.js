@@ -99,7 +99,7 @@ async function editarReporte(req, res) {
 
     setTimeout(() => {
       res.redirect(`/edit/${id}`);
-    }, 1500);
+    }, 500);
   } catch (error) {
     console.log(error);
     res.render("reportes/error", { error: error.message });
