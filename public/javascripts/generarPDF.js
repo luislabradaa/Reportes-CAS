@@ -18,7 +18,7 @@ function generatePDF() {
   var usuario = document.getElementById("usuario").value;
   var problema = document.getElementById("problema").value;
   var solucion = document.getElementById("solucion").value;
-  var atendio = document.getElementById("atendio").value;
+  var atendio = document.getElementById("nombre").value;
 
   //Configuración de posición, tamaño y fuente del archivo PDF 
   doc.setFontSize(14);

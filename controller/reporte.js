@@ -14,7 +14,6 @@ const storage = multer.diskStorage({
 
 var upload = multer({storage:storage});
 
-
 async function obtenerReportes(req, res) {
   try {
     const [result] = await pool.query(
