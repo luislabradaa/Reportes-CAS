@@ -72,7 +72,7 @@ async function crearReporte(req, res) {
       estado,
     };
     await pool.query("INSERT INTO tbl_reporte SET ?", [newReporte]);
-    res.redirect("/reportes");
+    res.redirect("/misReportes");
   } catch (error) {
     res.render("reportes/error", { error: error.message });
   }
