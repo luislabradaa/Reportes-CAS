@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {obtenerReportes, obtenerReporte, pantallaNuevoReporte, crearReporte, editarReporte, upload} from "../controller/reporte.js";
+import {obtenerReportes, misReportes, obtenerReporte, pantallaNuevoReporte, crearReporte, editarReporte, upload} from "../controller/reporte.js";
 import { inicioSesion, login, logOut } from "../controller/auth.js";
 //middleware
 import { requireLogin } from "../middleware/validateLogin.js";
@@ -17,6 +17,7 @@ router.get("/menu", requireLogin, pantallaMenu);
 
 //reportes
 router.get("/reportes", requireLogin,obtenerReportes);
+router.get("/misReportes", requireLogin,misReportes);
 router.get("/add", requireLogin,pantallaNuevoReporte);
 router.get("/edit/:id", requireLogin,obtenerReporte);
 router.post("/add", requireLogin,crearReporte);

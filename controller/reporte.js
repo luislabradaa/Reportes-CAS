@@ -24,6 +24,19 @@ async function obtenerReportes(req, res) {
     res.render("reportes/error", { error: error.message });
   }
 }
+
+async function misReportes(req, res) {
+  try {
+    const  id  = req.session.userId;
+    const [result] = await pool.query(
+      "SELECT  id, CONCAT(DATE_FORMAT(fecha, '%d-%m-%Y'), ' ', DATE_FORMAT(fecha, '%h:%i %p')) AS fecha, adscripcion, usuario, problema, solucion, id_atendio, tbl_user.nombre, estado, evidencia from tbl_reporte inner join tbl_user on tbl_reporte.id_atendio = tbl_user.id_u WHERE id_atendio = ?;",
+      [id]
+    );
+    res.render("reportes/misReportes", { reportes: result });
+  } catch (error) {
+    res.render("reportes/error", { error: error.message });
+  }
+}
 async function pantallaNuevoReporte(req, res) {
   try {
     res.render("reportes/newReporte",{ id: req.session.userId });
@@ -108,6 +121,7 @@ async function editarReporte(req, res) {
 export {
   pantallaNuevoReporte,
   obtenerReportes,
+  misReportes,
   obtenerReporte,
   crearReporte,
   editarReporte,

@@ -8,7 +8,6 @@ function inicioSesion(req,res){
 async function login(req,res){
     try{
         const { correo, clave } = req.body;
-        console.log("Se obtienen las credenciales:", correo + ' ' + clave);
         const [result] = await pool.query('SELECT id_u, nombre, correoIns, clave FROM tbl_user WHERE correoIns = ? AND clave = ?', [correo, clave])
         
         if (result.length > 0) {

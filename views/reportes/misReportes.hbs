@@ -1,0 +1,66 @@
+<nav class="card navbar bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white">{{nombre}}</a>
+    <div class="d-flex justify-content-end" >
+      <a href="/menu" class="btn btn-primary">Volver al menú</a>
+        <a href="/add" class="btn btn-primary">
+            <i class="bi bi-plus-lg"></i>
+            Nuevo 
+        </a>
+    </div>
+  </div>
+</nav>
+
+
+<div class="card bg-info text-white">
+    <div class="card-body">
+        <div class="container-fluid">
+            <div class="mt-5">
+                {{#if reportes}}
+                <table class="table table-hover" id="myTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">FECHA Y HORA</th>
+                            <th scope="col">ADSCRIPCION</th>
+                            <th scope="col">USUARIO</th>
+                            <th scope="col">PROBLEMA</th>
+                            <th scope="col">SOLUCION</th>
+                            <th scope="col">ATENDIO</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">EDITAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each reportes}}
+                        <tr
+                            class="{{#ifEquals estado 'ATENDIDO'}} table-success {{else ifEquals estado 'PROCESO'}} table-warning {{else}} table-secondary {{/ifEquals}}">
+                            <td>{{fecha }}</td>
+                            <td>{{adscripcion}}</td>
+                            <td>{{usuario}}</td>
+                            <td>{{problema}}</td>
+                            <td>{{solucion}}</td>
+                            <td>{{nombre}}</td>
+                            <td>{{estado}}</td>
+                            <td><a href="edit/{{id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{else}}
+                <div class="card text-center mx-auto bg-info text-white" style="width: 350px;">
+                    <div class="card-header">
+                        <h3>No hay reportes para mostrar</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>Crea uno haciendo clic en Nuevo reporte</p>
+                    </div>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+        <hr style="color: #ffffff;">
+        <div class="d-flex justify-content-center">
+            <img class="container-fluid" style="width: 45%;" src="/images/logos.png">
+        </div>
+    </div>
+</div>
