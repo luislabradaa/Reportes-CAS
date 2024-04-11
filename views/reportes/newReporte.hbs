@@ -1,22 +1,31 @@
 <div class="card bg-info mt-5">
   <div class="card-body bg-info">
-    <form action="/add" method="post">
+    <form action="/add" method="post" enctype="multipart/form-data">
       <div class="input-group mb-3">
-        <label for="adscripcion" class="input-group-text bg-secondary">ADSCRIPCION /<br> FACULTAD</label>
+        <label
+          for="adscripcion"
+          class="input-group-text bg-secondary"
+        >ADSCRIPCION /<br /> FACULTAD</label>
         <input
           type="text"
-          class="form-control "
+          class="form-control"
           name="adscripcion"
           id="adscripcion"
           required
         />
       </div>
       <div class="input-group mb-3">
-        <label for="usuario" class="input-group-text bg-secondary">USUARIO</label>
+        <label
+          for="usuario"
+          class="input-group-text bg-secondary"
+        >USUARIO</label>
         <input type="text" class="form-control" name="usuario" required />
       </div>
       <div class="input-group mb-3">
-        <label for="problema" class="input-group-text bg-secondary">PROBLEMA</label>
+        <label
+          for="problema"
+          class="input-group-text bg-secondary"
+        >PROBLEMA</label>
         <textarea
           class="form-control"
           name="problema"
@@ -26,7 +35,9 @@
         ></textarea>
       </div>
       <div class="input-group mb-3">
-        <label for="solucion" class="input-group-text bg-secondary">DIAGNOSTICO /<br> SOLUCION</label>
+        <label for="solucion" class="input-group-text bg-secondary">DIAGNOSTICO
+          /<br />
+          SOLUCION</label>
         <textarea
           class="form-control"
           name="solucion"
@@ -36,7 +47,10 @@
         ></textarea>
       </div>
       <div class="input-group mb-3" id="campoUser">
-        <label for="atendio" class="input-group-text bg-secondary">ATENDIO</label>
+        <label
+          for="atendio"
+          class="input-group-text bg-secondary"
+        >ATENDIO</label>
         <input
           type="number"
           class="form-control"
@@ -45,36 +59,7 @@
           id="atendio"
         />
       </div>
-      {{! <div class="input-group mb-3">
-        <label for="atendio" class="input-group-text bg-secondary">ATENDIO</label>
-        <select
-          class="form-select"
-          name="atendio"
-          id="atendio"
-          aria-label="Default select example"
-          required
-        >
-          <option disabled selected>Selecciona un nombre</option>
-          <option value="LILIA FABIOLA MONTES CAMPOS">LILIA FABIOLA MONTES
-            CAMPOS</option>
-          <option value="JOSE DE JESUS RAMIREZ BOCANEGRA">JOSE DE JESUS RAMIREZ
-            BOCANEGRA</option>
-          <option value="FERNANDO RAMIREZ BOCANEGRA">FERNANDO RAMIREZ BOCANEGRA</option>
-          <option value="LEONARDO SANCHEZ CABRERA">LEONARDO SANCHEZ CABRERA</option>
-          <option value="JOSE RODOLFO RESENDIZ HERRERA">JOSE RODOLFO RESENDIZ
-            HERRERA</option>
-          <option value="VICTOR HUGO GONZALEZ VILLEGAS">VICTOR HUGO GONZALEZ
-            VILLEGAS</option>
-          <option value="JOSE DE JESUS REYES CASTAÑOL">JOSE DE JESUS REYES
-            CASTAÑOL</option>
-          <option value="ARTURO MENDEZ VAZQUEZ">ARTURO MENDEZ VAZQUEZ</option>
-          <option value="ARTURO CORONA BELTRAN">ARTURO CORONA BELTRAN</option>
-          <option value="LUIS FERNANDO BARCENAS JIMENEZ">LUIS FERNANDO BARCENAS
-            JIMENEZ</option>
-          <option value="EDGAR IGNACIO GARCIA AVILES">EDGAR IGNACIO GARCIA
-            AVILES</option>
-        </select>
-      </div> }}
+
       <div class="input-group mb-3">
         <label for="estado" class="input-group-text bg-secondary">STATUS</label>
         <select
@@ -91,14 +76,28 @@
         </select>
       </div>
 
+      <div class="input-group mb-3">
+        <input
+          class="form-control"
+          type="file"
+          name="evidencia"
+          id="evidenciaInput"
+          required
+        />
+      </div>
+
       <div class="d-flex justify-content-center m-2" id="dBtnEnviar">
         <a href="/menu" class="btn btn-primary m-2">Volver al menú</a>
         <button type="submit" class="btn btn-primary m-2">Enviar</button>
       </div>
     </form>
-    <hr style="color: #ffffff;">
+    <hr style="color: #ffffff;" />
     <div class="d-flex justify-content-center">
-      <img class="container-fluid" style="width: 45%;" src="/images/logos.png">
+      <img
+        class="container-fluid"
+        style="width: 45%;"
+        src="/images/logos.png"
+      />
     </div>
   </div>
 </div>

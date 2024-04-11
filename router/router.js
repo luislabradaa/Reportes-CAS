@@ -20,7 +20,7 @@ router.get("/reportes", requireLogin,obtenerReportes);
 router.get("/misReportes", requireLogin,misReportes);
 router.get("/add", requireLogin,pantallaNuevoReporte);
 router.get("/edit/:id", requireLogin,obtenerReporte);
-router.post("/add", requireLogin,crearReporte);
-router.post("/edit/:id", upload.single('evidencia'),editarReporte);
+router.post("/add", requireLogin,upload.single('evidencia'),crearReporte);
+router.post("/edit/:id", requireLogin,upload.single('evidencia'),editarReporte);
 
 export default router;
