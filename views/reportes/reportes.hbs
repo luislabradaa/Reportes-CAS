@@ -1,14 +1,14 @@
 <nav class="card navbar bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand text-white">{{nombre}}</a>
-    <div class="d-flex justify-content-end" >
-      <a href="/menu" class="btn btn-primary">Volver al menú</a>
-        <a href="/add" class="btn btn-primary">
-            <i class="bi bi-plus-lg"></i>
-            Nuevo 
-        </a>
+    <div class="container-fluid">
+        <a class="navbar-brand text-white">{{nombre}}</a>
+        <div class="d-flex justify-content-end">
+            <a href="/menu" class="btn btn-primary">Volver al menú</a>
+            <a href="/add" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i>
+                Nuevo
+            </a>
+        </div>
     </div>
-  </div>
 </nav>
 
 
@@ -28,6 +28,7 @@
                             <th scope="col">ATENDIO</th>
                             <th scope="col">STATUS</th>
                             <th scope="col">EDITAR</th>
+                            <th scope="col">EVIDENCIA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,7 +43,34 @@
                             <td>{{nombre}}</td>
                             <td>{{estado}}</td>
                             <td><a href="edit/{{id}}" class="btn btn-primary"><i class="bi bi-pencil-fill"></i></a></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal{{id}}"><i class="bi bi-file-image"></i>
+                                </button>
+
+                            </td>
                         </tr>
+
+                        <div class="modal fade" id="exampleModal{{id}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-primary text-white">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Evidencia</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body bg-info">
+                                        <img src="/images/evidencias/{{evidencia}}" alt="Imagen de evidencia"
+                                            class="img-fluid" id="imgEvidencia">
+                                    </div>
+                                    <div class="modal-footer bg-info">
+                                        <button type="button" class="btn btn-primary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {{/each}}
                     </tbody>
                 </table>
